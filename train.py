@@ -39,7 +39,7 @@ if __name__ == "__main__":
                         help='number of epochs to train [default: 500]')
     parser.add_argument('--lambda-epochs', type=int, default=50, metavar='N',
                         help='gradually increase the value of lambda from 0 to 1')
-    parser.add_argument('--lr', type=float, default=0.0003, metavar='LR',
+    parser.add_argument('--lr', type=float, default=0.003, metavar='LR',
                         help='learning rate')
     args = parser.parse_args()
     args.data_name = 'handwritten_6views'
@@ -55,7 +55,7 @@ if __name__ == "__main__":
     print('The number of training images = %d' % N_mini_batches)
 
     model = TMC(10, args.views, args.dims, args.lambda_epochs)
-    optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=1e-5)
+    optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=1e-4)
 
     model.cuda()
 
